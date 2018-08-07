@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Vs Section */
+
+#users {
+  display: grid;
+  grid-template-columns: 45% 10% 45%;
+  grid-column-gap: 50px;
+}
+
+#users img {
+  max-height: 400px;
+  max-width: 100%;
+}
+
+.vs {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* Leaderboard Section */
+
+#leaderboard {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-column-gap: 50px;
+}
+
+/*
+============================
+    THIS IS TABLET!!!!!!
+============================
+*/
+@media only screen and (min-width: 601px) {
+  body {
+    margin: 0 auto;
+    width: 80%;
+  }
+}
+
+/*
+============================
+    THIS IS DESKTOP!!!!!!
+============================
+*/
+
+@media only screen and (min-width: 1001px) {
+}
