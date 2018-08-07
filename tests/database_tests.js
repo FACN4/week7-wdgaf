@@ -8,10 +8,6 @@ test('--------------database_tests.js----------tape is working', (t) => {
   t.end();
 });
 
-// test('tape is working', (t) => {
-//   t.equals(1, 1, 'one equals one');
-//   t.end();
-// });
 //
 // test('runDbBuild works', (t) => {
 //   runDbBuild((err, res) => {

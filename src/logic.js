@@ -6,3 +6,6 @@ const calcNewElo = (ELOold, ELOopp, winner, multiplier = 200) => {
   const expectedScore = ELOold / (ELOold + ELOopp);
   return ELOold + multiplier * (score - expectedScore);
 };
+
+
+module.exports = { calcNewElo };
