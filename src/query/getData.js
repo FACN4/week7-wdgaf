@@ -11,4 +11,4 @@ const getUserData = (cb) => {
   });
 };
 
-module.exports = getUserData;
+module.exports = { getUserData };
