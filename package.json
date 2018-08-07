@@ -6,9 +6,9 @@
   "scripts": {
     "test": "nyc tape tests/* | tap-spec",
     "dev": "nodemon src/server.js",
-    "coverage" : "nyc --reporter=lcov npm run test",
-    "start" : "node src/server.js",
-    "build" : "babel public -d output --copy-files"
+    "coverage": "nyc --reporter=lcov npm run test",
+    "start": "node src/server.js",
+    "build": "babel public -d output --copy-files"
   },
   "repository": {
     "type": "git",
