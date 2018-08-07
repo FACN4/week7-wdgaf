@@ -15,7 +15,7 @@ const assetsHandler = (url, response) => {
     png: 'image/png',
     json: 'application/json',
   };
-  const filePath = path.join(__dirname, '..', '..', 'public', url);
+  const filePath = path.join(__dirname, '..', '..', 'output', url);
   fs.readFile(filePath, (error, file) => {
     if (error) {
       response.writeHead(500, { 'Content-Type': 'text/html' });
