@@ -9,7 +9,6 @@ body {
 #users {
   display: grid;
   grid-template-columns: 45% 10% 45%;
-  grid-column-gap: 50px;
 }
 
 #users img {
@@ -28,6 +27,10 @@ body {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-column-gap: 50px;
+}
+
+#leaderboard ul {
+  list-style-type: none;
 }
 
 /*
