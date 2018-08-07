@@ -19,7 +19,7 @@ CREATE TABLE RATINGS (
   rating_id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL REFERENCES USERS(user_id),
   winner BOOLEAN NOT NULL,
-  opponent_id TEXT NOT NULL REFERENCES USERS(user_id),
+  opponent_id INTEGER NOT NULL REFERENCES USERS(user_id),
   opponent_elo INTEGER DEFAULT 1500,
 
 );
