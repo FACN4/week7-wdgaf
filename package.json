@@ -4,7 +4,7 @@
   "description": "A rating system for GITHub profile pics",
   "main": "src/server.js",
   "scripts": {
-    "test": "nyc tape tests/test.js | tap-spec",
+    "test": "nyc tape tests/* | tap-spec",
     "dev": "nodemon src/server.js",
     "coverage": "nyc --reporter=lcov npm run test",
     "start": "node src/server.js",

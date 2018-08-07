@@ -67,3 +67,5 @@ typings/
 
 coverage
 /coverage
+
+config.env
