@@ -1,13 +1,13 @@
-const test = require('tape');
-// const runDbBuild = require("../src/database/db_build");
-// const getData = require("../src/queries/getData");
-// const postData = require("../src/queries/postData");
-
-test('--------------database_tests.js----------tape is working', (t) => {
-  t.ok(true);
-  t.end();
-});
-
+// const test = require('tape');
+// const runDbBuild = require('../src/database/db_build');
+// const getData = require('../src/queries/getData');
+// const postData = require('../src/queries/postData');
+//
+// test('--------------database_tests.js----------tape is working', (t) => {
+//   t.ok(true);
+//   t.end();
+// });
+//
 //
 // test('runDbBuild works', (t) => {
 //   runDbBuild((err, res) => {
