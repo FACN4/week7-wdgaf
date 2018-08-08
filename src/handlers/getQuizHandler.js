@@ -14,6 +14,7 @@ const getQuizHandler = (request, response) => {
       const user1 = Math.floor(Math.random() * numberOfUsers) + 1;
       const user2 = Math.floor(Math.random() * numberOfUsers) + 1;
       // Build object with the 2 users to respond to XHR request
+      //WARNING, PUT IN AN IF STATMENT TO CHECK IF THE SAME USER WAS SELECTED RANDOMLY
       const res = {
         user1: result.row[user1],
         user2: result.row[user2],
