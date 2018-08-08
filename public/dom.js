@@ -6,27 +6,32 @@ const user2 = document.getElementById('user2');
 const user2Img = document.getElementById('user2Img');
 
 const newQuiz = () => {
-  getQuiz((userObjects) => {
-    user1.setAttribute('userID', userObjects.user1.user_id);
-    user1Img.src = userObjects.user1.git_photo_url;
-    user2.setAttribute('userID', userObjects.user2.user_id);
-    user2Img.src = userObjects.user2.git_photo_url;
+  getQuiz((err, userObjects) => {
+    if (err) {
+      console.log('Error while getting quiz');
+    } else {
+      console.log(userObjects);
+      user1.setAttribute('userID', userObjects.user1.user_id);
+      user1Img.src = userObjects.user1.git_photo_url;
+      user2.setAttribute('userID', userObjects.user2.user_id);
+      user2Img.src = userObjects.user2.git_photo_url;
+    }
   });
 };
 
-const newWalls = () => {
-  getWalls((wallsObject) => {
-    const { wallOfFame, wallOfShame } = wallsObject;
-    console.log('FAME');
-    console.log(wallOfFame);
-    console.log('SHAME');
-    console.log(wallOfShame);
-  });
-};
+// const newWalls = () => {
+//   getWalls((wallsObject) => {
+//     const { wallOfFame, wallOfShame } = wallsObject;
+//     console.log('FAME');
+//     console.log(wallOfFame);
+//     console.log('SHAME');
+//     console.log(wallOfShame);
+//   });
+// };
 
 window.addEventListener('load', () => {
   newQuiz();
-  newWalls();
+  // newWalls();
 });
 
 // const postQuizResults = (clickEvent) => {
