@@ -30,9 +30,7 @@ var newQuiz = function newQuiz() {
   });
 };
 
-
 // Fn to set up the wall of fame/shame
-
 var generateWallHTML = function generateWallHTML(wallObj, ulId) {
   wallObj.forEach(function (user) {
     var node = document.createElement('LI'); // Create a <li> node
