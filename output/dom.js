@@ -4,8 +4,10 @@
 
 var user1 = document.getElementById('user1');
 var user1Img = document.getElementById('user1Img');
+var user1Name = document.getElementById('user1').getElementsByTagName('h2')[0];
 var user2 = document.getElementById('user2');
 var user2Img = document.getElementById('user2Img');
+var user2Name = document.getElementById('user2').getElementsByTagName('h2')[0];
 
 var newQuiz = function newQuiz() {
   getQuiz(function (err, userObjects) {
@@ -14,8 +16,10 @@ var newQuiz = function newQuiz() {
     } else {
       console.log(userObjects);
       user1.setAttribute('userID', userObjects.user1.user_id);
+      user1Name.textContent = userObjects.user1.git_username;
       user1Img.src = userObjects.user1.git_photo_url;
       user2.setAttribute('userID', userObjects.user2.user_id);
+      user2Name.textContent = userObjects.user2.git_username;
       user2Img.src = userObjects.user2.git_photo_url;
     }
   });

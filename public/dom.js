@@ -2,17 +2,22 @@
 
 const user1 = document.getElementById('user1');
 const user1Img = document.getElementById('user1Img');
+const user1Name = document.getElementById('user1').getElementsByTagName('h2')[0];
 const user2 = document.getElementById('user2');
 const user2Img = document.getElementById('user2Img');
+const user2Name = document.getElementById('user2').getElementsByTagName('h2')[0];
 
 const newQuiz = () => {
   getQuiz((err, userObjects) => {
     if (err) {
       console.log('Error while getting quiz');
     } else {
+      console.log(userObjects);
       user1.setAttribute('userID', userObjects.user1.user_id);
+      user1Name.textContent = userObjects.user1.git_username;
       user1Img.src = userObjects.user1.git_photo_url;
       user2.setAttribute('userID', userObjects.user2.user_id);
+      user2Name.textContent = userObjects.user2.git_username;
       user2Img.src = userObjects.user2.git_photo_url;
     }
   });
