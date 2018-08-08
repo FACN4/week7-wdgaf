@@ -2,6 +2,16 @@ const { getUserData } = require('../query/getData');
 
 /* Function to return data for the wall of fame and wall of shame */
 
+const sortByElo = (a, b) => {
+  let comparison = 0;
+  if (a.elo > b.elo) {
+    comparison = 1;
+  } else if (a.elo < b.elo) {
+    comparison = -1;
+  }
+  return comparison;
+};
+
 const getWallsHandler = (request, response) => {
   getUserData((error, result) => {
     // Error message to send if the data doesn't send correctly
@@ -10,7 +20,7 @@ const getWallsHandler = (request, response) => {
       response.end(JSON.stringify({ error: 'Sorry, unable to fulfil request' }));
     } else {
       // sort the users by their elo score
-      const sortedArray = parseInt(result.row.length, 10);
+      const sortedArray = result.sort(sortByElo);
       // slice the top 5 and lowest 5
       const wallOfFame = sortedArray.slice(0, 5);
       const wallOfShame = sortedArray.slice(-5);
