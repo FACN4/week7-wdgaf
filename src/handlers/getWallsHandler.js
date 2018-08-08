@@ -10,7 +10,7 @@ const getWallsHandler = (request, response) => {
       response.end(JSON.stringify({ error: 'Sorry, unable to fulfil request' }));
     } else {
       const wallOfFame = result.slice(0, 5);
-      const wallOfShame = result.slice(-5);
+      const wallOfShame = result.slice(-5).reverse();
       // Build object with the 2 users to respond to XHR request
       const res = {
         wallOfFame,
