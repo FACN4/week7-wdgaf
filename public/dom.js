@@ -23,16 +23,25 @@ const newQuiz = () => {
   });
 };
 
+const generateWallHTML = (wallObj, ulId) => {
+  wallObj.forEach((user) => {
+    const node = document.createElement('LI'); // Create a <li> node
+    const textnode = document.createTextNode(user.git_username); // Create a text node
+    node.appendChild(textnode); // Append the text to <li>
+    ulId.appendChild(node);
+  });
+};
+
 const newWalls = () => {
   getWalls((err, wallsObject) => {
     if (err) {
       console.log('Error while getting walls');
     } else {
       const { wallOfFame, wallOfShame } = wallsObject;
-      console.log('FAME');
-      console.log(wallOfFame);
-      console.log('SHAME');
-      console.log(wallOfShame);
+      const wallOfFameUL = document.getElementById('wall-of-fame');
+      const wallOfShameUL = document.getElementById('wall-of-shame');
+      generateWallHTML(wallOfFame, wallOfFameUL);
+      generateWallHTML(wallOfShame, wallOfShameUL);
     }
   });
 };

@@ -25,6 +25,15 @@ var newQuiz = function newQuiz() {
   });
 };
 
+var generateWallHTML = function generateWallHTML(wallObj, ulId) {
+  wallObj.forEach(function (user) {
+    var node = document.createElement('LI'); // Create a <li> node
+    var textnode = document.createTextNode(user.git_username); // Create a text node
+    node.appendChild(textnode); // Append the text to <li>
+    ulId.appendChild(node);
+  });
+};
+
 var newWalls = function newWalls() {
   getWalls(function (err, wallsObject) {
     if (err) {
@@ -33,10 +42,10 @@ var newWalls = function newWalls() {
       var wallOfFame = wallsObject.wallOfFame,
           wallOfShame = wallsObject.wallOfShame;
 
-      console.log('FAME');
-      console.log(wallOfFame);
-      console.log('SHAME');
-      console.log(wallOfShame);
+      var wallOfFameUL = document.getElementById('wall-of-fame');
+      var wallOfShameUL = document.getElementById('wall-of-shame');
+      generateWallHTML(wallOfFame, wallOfFameUL);
+      generateWallHTML(wallOfShame, wallOfShameUL);
     }
   });
 };
