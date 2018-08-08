@@ -7,8 +7,10 @@ var globalUsers = void 0;
 
 var user1 = document.getElementById('user1');
 var user1Img = document.getElementById('user1Img');
+var user1Name = document.getElementById('user1').getElementsByTagName('h2')[0];
 var user2 = document.getElementById('user2');
 var user2Img = document.getElementById('user2Img');
+var user2Name = document.getElementById('user2').getElementsByTagName('h2')[0];
 
 // Fn to set up a new quiz on the screen
 var newQuiz = function newQuiz() {
@@ -19,14 +21,27 @@ var newQuiz = function newQuiz() {
       globalUsers = userObjects;
       // globaluserindex holds the user's index within the globalUsers variable
       user1.setAttribute('globaluserindex', '0');
+      user1Name.textContent = userObjects.user1.git_username;
       user1Img.src = userObjects.user1.git_photo_url;
       user2.setAttribute('globaluserindex', '1');
+      user2Name.textContent = userObjects.user2.git_username;
       user2Img.src = userObjects.user2.git_photo_url;
     }
   });
 };
 
+
 // Fn to set up the wall of fame/shame
+
+var generateWallHTML = function generateWallHTML(wallObj, ulId) {
+  wallObj.forEach(function (user) {
+    var node = document.createElement('LI'); // Create a <li> node
+    var textnode = document.createTextNode(user.git_username); // Create a text node
+    node.appendChild(textnode); // Append the text to <li>
+    ulId.appendChild(node);
+  });
+};
+
 var newWalls = function newWalls() {
   getWalls(function (err, wallsObject) {
     if (err) {
@@ -35,10 +50,10 @@ var newWalls = function newWalls() {
       var wallOfFame = wallsObject.wallOfFame,
           wallOfShame = wallsObject.wallOfShame;
 
-      console.log('FAME');
-      console.log(wallOfFame);
-      console.log('SHAME');
-      console.log(wallOfShame);
+      var wallOfFameUL = document.getElementById('wall-of-fame');
+      var wallOfShameUL = document.getElementById('wall-of-shame');
+      generateWallHTML(wallOfFame, wallOfFameUL);
+      generateWallHTML(wallOfShame, wallOfShameUL);
     }
   });
 };
