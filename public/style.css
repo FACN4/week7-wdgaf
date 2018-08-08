@@ -21,7 +21,13 @@
   font-weight: bold;
   padding-top : 70px;
 }
-
+#user1, #user2 {
+  cursor:pointer;
+  padding-bottom: 5%;
+}
+#user1:hover, #user2:hover {
+    background-color: rgb(241, 248, 255);
+}
 
 /* Leaderboard Section */
 
