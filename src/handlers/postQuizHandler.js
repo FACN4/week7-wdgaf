@@ -11,16 +11,16 @@ const postQuizHandler = (request, response) => {
   /* Method to trigger when all data has been received */
   request.on('end', () => {
     const quizData = JSON.parse(allData);
-    console.log('quizData', quizData);
     const { winner, loser } = quizData;
     // Calculate new elo scores
-    const winnerNewElo = calcNewElo(winner.elo, loser.elo, true);
-    const loserNewElo = calcNewElo(loser.elo, winner.elo, false);
+    const winnerNewElo = calcNewElo(winner.elo_ranking, loser.elo_ranking, true);
+    const loserNewElo = calcNewElo(loser.elo_ranking, winner.elo_ranking, false);
     // Counter to make sure that all 3 callbacks have executed before responding
     let counter = 0;
     // Define callback function to be used later in this handler
     const eloCallBack = (err) => {
       if (err) {
+        console.log(err);
         response.writeHead(500, { 'Content-Type': 'text/plain' });
         response.end('error, could not update ELO rating in database');
       } else {
@@ -32,7 +32,7 @@ const postQuizHandler = (request, response) => {
       }
     };
     // Update ELO rating in both tables
-    logRating(winner.id, winner.elo, loser.id, loser.elo, true, eloCallBack);
+    logRating(winner.id, winner.elo_ranking, loser.id, loser.elo_ranking, true, eloCallBack);
     updateElo(winner.id, winnerNewElo, eloCallBack);
     updateElo(loser.id, loserNewElo, eloCallBack);
   });
