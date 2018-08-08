@@ -43,10 +43,14 @@ const newQuiz = () => {
 
 // Fn to set up the wall of fame/shame
 const generateWallHTML = (wallObj, ulId) => {
-  wallObj.forEach((user) => {
+  wallObj.forEach((user, counter) => {
     const node = document.createElement('LI'); // Create a <li> node
-    const textnode = document.createTextNode(user.git_username); // Create a text node
-    node.appendChild(textnode); // Append the text to <li>
+    const image = document.createElement('IMG');
+    const header = document.createElement('h3');
+    header.textContent = `${counter + 1}.  ${user.git_username}`;
+    image.src = user.git_photo_url;
+    node.appendChild(image);
+    node.appendChild(header); // Append the text to <li>
     ulId.appendChild(node);
   });
 };
