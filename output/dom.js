@@ -12,7 +12,6 @@ var newQuiz = function newQuiz() {
     if (err) {
       console.log('Error while getting quiz');
     } else {
-      console.log(userObjects);
       user1.setAttribute('userID', userObjects.user1.user_id);
       user1Img.src = userObjects.user1.git_photo_url;
       user2.setAttribute('userID', userObjects.user2.user_id);

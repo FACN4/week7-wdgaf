@@ -1,4 +1,4 @@
-body {
+ body {
   margin: 0;
   padding: 0;
   text-align: center;
@@ -11,14 +11,15 @@ body {
   grid-template-columns: 45% 10% 45%;
 }
 
-#users img {
-  max-height: 400px;
-  max-width: 100%;
+#users img{
+  height: 50%;
+  width: 50%;
 }
 
 .vs {
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: bold;
+  padding-top : 70px;
 }
 
 /* Leaderboard Section */
@@ -27,6 +28,8 @@ body {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-column-gap: 50px;
+  justify-content: space-around;
+  margin : 20px 50px 20px 20px;
 }
 
 #leaderboard ul {
@@ -42,7 +45,12 @@ body {
   body {
     margin: 0 auto;
     width: 80%;
+
   }
+}
+#users img{
+  height: 70%;
+  width: 70%;
 }
 
 /*
@@ -52,4 +60,18 @@ body {
 */
 
 @media only screen and (min-width: 1001px) {
+body{
+      margin: 0 auto;
+}
+  #users img{
+    height: 70%;
+    width: 70%;
+  }
+  .vs{
+    font-size : 3em;
+    padding-top : 170px;
+}
+#leaderboard #wall-of-fame{
+  margin : 20px 60px 20px 20px;
+}
 }
