@@ -1,8 +1,6 @@
 # Week6-Rate-My-GIT
 
 
-Link to [project diagrams (Schema, Wireframe, Architecture)](https://www.lucidchart.com/invitations/accept/d92c2a07-f5b9-4232-beca-98c1db56c5e9)
-
 
 # **TEAM AWESOME IS DOING AWESOME** 🙈 🙉 🙊 
                            
@@ -21,7 +19,7 @@ It's so much FUN 😜
 
   * **Using a database set locally & on Heruku for storing our Data instead of only keeping it in a Json file.**
  
-  * **Using Architecture - Schemas** >> https://www.lucidchart.com/invitations/accept/d92c2a07-f5b9-4232-beca-98c1db56c5e9
+  * **Using Architecture - Schemas** >> Link to [project diagrams (Schema, Wireframe, Architecture)](https://www.lucidchart.com/invitations/accept/d92c2a07-f5b9-4232-beca-98c1db56c5e9)
  
   * **Migration rather than Integration .**
  
