@@ -36,4 +36,4 @@ const pushQuizHandler = (request, response) => {
     updateElo(loser.id, loserNewElo, eloCallBack);
   });
 };
-module.exports = pushQuizHandler;
+module.exports = postQuizHandler;
