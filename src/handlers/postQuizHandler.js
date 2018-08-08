@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const { calcNewElo } = require('../logic.js');
 const { updateElo, logRating } = require('../query/postData');
 
@@ -32,9 +33,9 @@ const postQuizHandler = (request, response) => {
       }
     };
     // Update ELO rating in both tables
-    logRating(winner.id, winner.elo_ranking, loser.id, loser.elo_ranking, true, eloCallBack);
-    updateElo(winner.id, winnerNewElo, eloCallBack);
-    updateElo(loser.id, loserNewElo, eloCallBack);
+    logRating(winner.user_id, winner.elo_ranking, loser.user_id, loser.elo_ranking, eloCallBack);
+    updateElo(winner.user_id, winnerNewElo, eloCallBack);
+    updateElo(loser.user_id, loserNewElo, eloCallBack);
   });
 };
 module.exports = postQuizHandler;
