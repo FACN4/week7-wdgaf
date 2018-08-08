@@ -1,6 +1,6 @@
 # Week6-Rate-My-GIT
 
-
+Rate My Git >> Check it out at https://rate-my-git.herokuapp.com/ 
 
 # **TEAM AWESOME IS DOING AWESOME** 🙈 🙉 🙊 
                            
