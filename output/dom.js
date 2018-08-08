@@ -12,11 +12,23 @@ var user2 = document.getElementById('user2');
 var user2Img = document.getElementById('user2Img');
 var user2Name = document.getElementById('user2').getElementsByTagName('h2')[0];
 
+var warningMessage = function warningMessage(text, delay) {
+  var warningBar = document.getElementById('alert');
+  var warningText = warningBar.childNodes[1];
+  warningText.textContent = text;
+  warningBar.style.visibility = 'visible';
+  if (delay) {
+    setTimeout(function () {
+      warningBar.style.visibility = 'hidden';
+    }, delay);
+  }
+};
+
 // Fn to set up a new quiz on the screen
 var newQuiz = function newQuiz() {
   getQuiz(function (err, userObjects) {
     if (err) {
-      console.log('Error while getting quiz');
+      warningMessage('Error while getting quiz', 2000);
     } else {
       globalUsers = userObjects;
       // globaluserindex holds the user's index within the globalUsers variable
@@ -47,7 +59,7 @@ var generateWallHTML = function generateWallHTML(wallObj, ulId) {
 var newWalls = function newWalls() {
   getWalls(function (err, wallsObject) {
     if (err) {
-      console.log('Error while getting walls');
+      warningMessage('Error while getting walls', 2000);
     } else {
       var wallOfFame = wallsObject.wallOfFame,
           wallOfShame = wallsObject.wallOfShame;
@@ -69,10 +81,9 @@ var postQuizResults = function postQuizResults(winnerProp) {
   // The only possible properties are user1 and user2
   var loserProp = winnerProp === 'user1' ? 'user2' : 'user1';
   var winnerLoserObj = { winner: globalUsers[winnerProp], loser: globalUsers[loserProp] };
-  console.log(winnerLoserObj);
   postQuizRes(winnerLoserObj, function (err) {
     if (err) {
-      console.log('Sorry, there was a problem with sending your answer');
+      warningMessage('Sorry, there was a problem with sending your answer', 3000);
     }
   });
   newQuiz();
