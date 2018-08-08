@@ -3,6 +3,41 @@ body {
   padding: 0;
   text-align: center;
   font-family: 'PT Sans', sans-serif;
+  line-height: 1.5;
+}
+
+ul {
+  list-style-type: none;
+  width: 400px;
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  line-height: 100px;
+  margin: 0;
+  padding: 0;
+}
+
+li img {
+  max-width: 100px;
+  max-height: 100px;
+  height: 100%;
+  width: auto;
+  float: left;
+  border-radius: 50%;
+}
+
+li p {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  overflow: auto;
+  margin: 0;
 }
 
 /* Header section */
@@ -19,11 +54,6 @@ h1 {
 
 /* Vs Section */
 
-#users {
-  display: grid;
-  grid-template-columns: 45% 10% 45%;
-}
-
 #users img {
   height: 50%;
   width: 50%;
@@ -37,16 +67,27 @@ h1 {
 
 /* Leaderboard Section */
 
-#leaderboard {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-column-gap: 50px;
-  justify-content: space-around;
-  margin: 20px 50px 20px 20px;
-}
-
 #leaderboard ul {
   list-style-type: none;
+}
+
+#wall-of-shame img,
+#wall-of-fame img {
+  float: left;
+  width: 100px;
+  height: 100px;
+}
+
+#leaderboard {
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+#wall-of-shame,
+#wall-of-fame {
+  list-style-type: none;
+  margin-left: 0px;
+  padding-left: 0px;
 }
 
 /*
@@ -58,18 +99,46 @@ h1 {
   body {
     margin: 0 auto;
   }
-}
 
-#leaderboard,
-#users {
-  width: 80%;
-  margin: 0 auto;
-}
+  #users {
+    display: grid;
+    grid-template-columns: 45% 10% 45%;
+  }
 
-#users img {
-  height: 70%;
-  width: 70%;
-  border-radius: 1em;
+  #leaderboard div {
+    display: grid;
+    grid-template-columns: 45% 10% 45%;
+    justify-content: space-around;
+    margin: 20px 50px 20px 20px;
+  }
+
+  #leaderboard div,
+  #users {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  #leaderboard {
+    border-top: 1px #d3d3d3 solid;
+    border-bottom: 1px #d3d3d3 solid;
+    margin-top: 25px;
+    background: #f3f3f3;
+    padding-bottom: 10px;
+  }
+
+  #users {
+    padding: 20px 0px;
+  }
+
+  #users img {
+    height: 70%;
+    width: 70%;
+    border-radius: 1em;
+  }
+
+  footer {
+    padding: 10px;
+  }
 }
 
 /*
@@ -89,9 +158,5 @@ h1 {
   .vs {
     font-size: 3em;
     padding-top: 170px;
-  }
-
-  #leaderboard #wall-of-fame {
-    margin: 20px 60px 20px 20px;
   }
 }

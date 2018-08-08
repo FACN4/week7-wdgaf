@@ -32,10 +32,14 @@ var newQuiz = function newQuiz() {
 
 // Fn to set up the wall of fame/shame
 var generateWallHTML = function generateWallHTML(wallObj, ulId) {
-  wallObj.forEach(function (user) {
+  wallObj.forEach(function (user, counter) {
     var node = document.createElement('LI'); // Create a <li> node
-    var textnode = document.createTextNode(user.git_username); // Create a text node
-    node.appendChild(textnode); // Append the text to <li>
+    var image = document.createElement('IMG');
+    var header = document.createElement('h3');
+    header.textContent = String(counter + 1) + '.  ' + String(user.git_username);
+    image.src = user.git_photo_url;
+    node.appendChild(image);
+    node.appendChild(header); // Append the text to <li>
     ulId.appendChild(node);
   });
 };
