@@ -2,7 +2,7 @@ const { calcNewElo } = require('../logic.js');
 const { updateElo, logRating } = require('../query/postData');
 
 /* Function to update the database with the results of the quiz */
-const pushQuizHandler = (request, response) => {
+const postQuizHandler = (request, response) => {
   /* Using post method so data is coming in streams */
   let allData = '';
   request.on('data', (data) => {
