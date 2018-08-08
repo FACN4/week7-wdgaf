@@ -11,6 +11,7 @@ const postQuizHandler = (request, response) => {
   /* Method to trigger when all data has been received */
   request.on('end', () => {
     const quizData = JSON.parse(allData);
+    console.log(quizData);
     const { winner, loser } = quizData;
     // Calculate new elo scores
     const winnerNewElo = calcNewElo(winner.elo, loser.elo, true);
