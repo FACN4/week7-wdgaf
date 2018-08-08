@@ -4,7 +4,12 @@ const {
 const url = require('url');
 require('env2')('./config.env');
 
-if (!process.env.DB_URL) throw new Error('Enviroment variable DB_URL must be set');
+let { DB_URL } = process.env;
+if (process.env.NODE_ENV === 'test') {
+  DB_URL = process.env.TEST_DB_URL;
+}
+
+if (!DB_URL) throw new Error('Enviroment variable DB_URL must be set');
 
 const params = url.parse(process.env.DB_URL);
 const [username, password] = params.auth.split(':');
