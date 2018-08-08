@@ -5,22 +5,29 @@ const userData = require('./git_member_data.json');
 
 const makeEmptyTables = fs.readFileSync(`${__dirname}/build.sql`, 'utf-8');
 
-dbConnection.query(makeEmptyTables, (error) => {
-  if (error) {
-    console.log('Building DB error', error);
-  } else {
-    console.log('Buiding DB success');
-    userData.forEach((person) => {
-      if (person.avatar_url) {
-        const SQLquery = 'INSERT INTO users (git_username,git_profile_url,git_photo_url) VALUES ($1,$2,$3)';
-        dbConnection.query(SQLquery, [person.login, person.html_url, person.avatar_url], (err) => {
-          if (err) {
-            console.log('Filling DB error', err);
-          } else {
-            console.log('Filling DB success');
-          }
-        });
-      }
-    });
-  }
-});
+const runDbBuild = (cb) => {
+  dbConnection.query(makeEmptyTables, (error) => {
+    if (error) {
+      console.log('Building DB error', error);
+      cb(error);
+    } else {
+      userData.forEach((person) => {
+        if (person.avatar_url) {
+          const SQLquery = 'INSERT INTO users (git_username,git_profile_url,git_photo_url) VALUES ($1,$2,$3)';
+          dbConnection.query(SQLquery, [person.login, person.html_url, person.avatar_url],
+            (err) => {
+              if (err) {
+                cb(err);
+              }
+            });
+        }
+      });
+      cb(null);
+    }
+  });
+};
+
+if (process.argv[2] === 'run') {
+  runDbBuild(console.log);
+}
+module.exports = runDbBuild;
