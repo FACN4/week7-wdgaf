@@ -44,10 +44,11 @@ window.addEventListener('load', () => {
   newWalls();
 });
 
-const postQuizResults = (winnerIndex) => {
-  // The only possible indexes are 0 and 1. We set the loser index based on the winner
-  const loserIndex = winnerIndex === 0 ? 1 : 0;
-  const winnerLoserObj = { winner: globalUsers[winnerIndex], loser: loserIndex[loserIndex] };
+const postQuizResults = (winnerProp) => {
+  // The only possible properties are user1 and user2
+  const loserProp = winnerProp === 'user1' ? 'user2' : 'user1';
+  const winnerLoserObj = { winner: globalUsers[winnerProp], loser: globalUsers[loserProp] };
+  console.log(winnerLoserObj);
   postQuizRes(winnerLoserObj, (err) => {
     if (err) {
       console.log('Sorry, there was a problem with sending your answer');
@@ -56,5 +57,5 @@ const postQuizResults = (winnerIndex) => {
   newQuiz();
 };
 
-user1.addEventListener('click', () => postQuizResults(0), true);
-user2.addEventListener('click', () => postQuizResults(1), true);
+user1.addEventListener('click', () => postQuizResults('user1'), true);
+user2.addEventListener('click', () => postQuizResults('user2'), true);
