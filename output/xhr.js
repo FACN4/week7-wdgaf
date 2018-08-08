@@ -9,14 +9,14 @@ var postQuizRes = function postQuizRes(winnerLoserObj, cb) {
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-        cb(null, JSON.parse(xhr.responseText));
+        cb(null);
       } else {
         cb(new Error('Sorry, your quiz response could not be handled.'));
       }
     }
   };
   xhr.open('POST', url, true);
-  xhr.setRequestHeader('Content-type', 'application/json');
+  xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify(winnerLoserObj));
 };
 

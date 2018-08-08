@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const fs = require('fs');
 const dbConnection = require('./dbconnection');
 const userData = require('./git_member_data.json');

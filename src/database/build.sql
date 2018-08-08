@@ -13,9 +13,9 @@ DROP TABLE IF EXISTS ratings CASCADE;
 
 CREATE TABLE ratings (
   rating_id SERIAL PRIMARY KEY,
-  user_id INTEGER NOT NULL REFERENCES USERS(user_id),
-  winner BOOLEAN NOT NULL,
-  opponent_id INTEGER NOT NULL REFERENCES USERS(user_id),
-  opponent_elo INTEGER DEFAULT 1500
+  winner_id INTEGER NOT NULL REFERENCES USERS(user_id),
+  winner_elo INTEGER NOT NULL,
+  loser_id INTEGER NOT NULL REFERENCES USERS(user_id),
+  loser_elo INTEGER NOT NULL
 );
 COMMIT;
