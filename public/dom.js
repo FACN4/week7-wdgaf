@@ -1,4 +1,4 @@
-/* global getQuiz postQuizRes */
+/* global getQuiz postQuizRes getWalls */
 
 const user1 = document.getElementById('user1');
 const user1Img = document.getElementById('user1Img');
@@ -14,13 +14,28 @@ const newQuiz = () => {
   });
 };
 
-const postQuizResults = (clickEvent) => {
-  const winnerUserID = clickEvent.target.userID;
-  const loserUserID = clickEvent.target.userID;
-  const winnerLoserObj = { winner: winnerUserID, loser: loserUserID };
-  postQuizRes(winnerLoserObj, console.log);
-  newQuiz();
+const newWalls = () => {
+  getWalls((wallsObject) => {
+    const { wallOfFame, wallOfShame } = wallsObject;
+    console.log('FAME');
+    console.log(wallOfFame);
+    console.log('SHAME');
+    console.log(wallOfShame);
+  });
 };
 
-user1.addEventListener('click', event => postQuizResults(event));
-user2.addEventListener('click', event => postQuizResults(event));
+window.addEventListener('load', () => {
+  newQuiz();
+  newWalls();
+});
+
+// const postQuizResults = (clickEvent) => {
+//   const winnerUserID = clickEvent.target.userID;
+//   const loserUserID = clickEvent.target.userID;
+//   const winnerLoserObj = { winner: winnerUserID, loser: loserUserID };
+//   postQuizRes(winnerLoserObj, console.log);
+//   newQuiz();
+// };
+//
+// user1.addEventListener('click', event => postQuizResults(event));
+// user2.addEventListener('click', event => postQuizResults(event));
