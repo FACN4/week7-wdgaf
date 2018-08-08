@@ -21,19 +21,25 @@ var newQuiz = function newQuiz() {
   });
 };
 
-// const newWalls = () => {
-//   getWalls((wallsObject) => {
-//     const { wallOfFame, wallOfShame } = wallsObject;
-//     console.log('FAME');
-//     console.log(wallOfFame);
-//     console.log('SHAME');
-//     console.log(wallOfShame);
-//   });
-// };
+var newWalls = function newWalls() {
+  getWalls(function (err, wallsObject) {
+    if (err) {
+      console.log('Error while getting walls');
+    } else {
+      var wallOfFame = wallsObject.wallOfFame,
+          wallOfShame = wallsObject.wallOfShame;
+
+      console.log('FAME');
+      console.log(wallOfFame);
+      console.log('SHAME');
+      console.log(wallOfShame);
+    }
+  });
+};
 
 window.addEventListener('load', function () {
   newQuiz();
-  // newWalls();
+  newWalls();
 });
 
 // const postQuizResults = (clickEvent) => {
