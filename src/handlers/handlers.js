@@ -3,15 +3,15 @@
 const homePageHandler = require('./homePageHandler.js');
 const notFoundHandler = require('./notFoundHandler.js');
 const assetsHandler = require('./assetsHandler.js');
-const pushQuizHandler = require('./pushQuizHandler.js');
-const requestQuizHandler = require('./requestQuizHandler.js');
-const requestWallsHandler = require('./requestWallsHandler.js');
+const postQuizHandler = require('./postQuizHandler.js');
+const getQuizHandler = require('./getQuizHandler.js');
+const getWallsHandler = require('./getWallsHandler.js');
 
 module.exports = {
   homePageHandler,
   notFoundHandler,
   assetsHandler,
-  pushQuizHandler,
-  requestQuizHandler,
-  requestWallsHandler,
+  postQuizHandler,
+  getQuizHandler,
+  getWallsHandler,
 };
