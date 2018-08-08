@@ -15,10 +15,10 @@ const newQuiz = () => {
       console.log('Error while getting quiz');
     } else {
       globalUsers = userObjects;
-      // globalUserIndex holds the user's index within the globalUsers variable
-      user1.setAttribute('globalUserIndex', 0);
+      // globaluserindex holds the user's index within the globalUsers variable
+      user1.setAttribute('globaluserindex', '0');
       user1Img.src = userObjects.user1.git_photo_url;
-      user2.setAttribute('globalUserIndex', 1);
+      user2.setAttribute('globaluserindex', '1');
       user2Img.src = userObjects.user2.git_photo_url;
     }
   });
@@ -44,23 +44,17 @@ window.addEventListener('load', () => {
   newWalls();
 });
 
-const postQuizResults = (clickEvent) => {
-  // Checks if the click event target has a globalUserIndex property
-  if (Object.prototype.hasOwnProperty.call(clickEvent.target, 'globalUserIndex')) {
-    const winnerIndex = clickEvent.target.globalUserIndex;
-    // The only possible indexes are 0 and 1. We set the loser index based on the winner
-    const loserIndex = winnerIndex === 0 ? 1 : 0;
-    const winnerLoserObj = { winner: globalUsers[winnerIndex], loser: loserIndex[loserIndex] };
-    postQuizRes(winnerLoserObj, (err) => {
-      if (err) {
-        console.log(err);
-      }
-    });
-    newQuiz();
-  } else {
-    console.log('Sorry, there was a problem sending data to our servers.');
-  }
+const postQuizResults = (winnerIndex) => {
+  // The only possible indexes are 0 and 1. We set the loser index based on the winner
+  const loserIndex = winnerIndex === 0 ? 1 : 0;
+  const winnerLoserObj = { winner: globalUsers[winnerIndex], loser: loserIndex[loserIndex] };
+  postQuizRes(winnerLoserObj, (err) => {
+    if (err) {
+      console.log('Sorry, there was a problem with sending your answer');
+    }
+  });
+  newQuiz();
 };
 
-user1.addEventListener('click', event => postQuizResults(event));
-user2.addEventListener('click', event => postQuizResults(event));
+user1.addEventListener('click', () => postQuizResults(0), true);
+user2.addEventListener('click', () => postQuizResults(1), true);
