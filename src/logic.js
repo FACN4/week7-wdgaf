@@ -4,7 +4,8 @@ const calcNewElo = (ELOold, ELOopp, winner, multiplier = 200) => {
   // Equation: ELOnew = ELOold + multiplier*(score - expectedScore)
   const score = winner ? 1 : 0;
   const expectedScore = ELOold / (ELOold + ELOopp);
-  return ELOold + multiplier * (score - expectedScore);
+  const ELOnew = ELOold + multiplier * (score - expectedScore);
+  return Math.round(ELOnew);
 };
 
 
