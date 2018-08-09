@@ -4,7 +4,7 @@ Rate My Git >> Check it out at https://rate-my-git.herokuapp.com/
 
 # **TEAM AWESOME IS DOING AWESOME** 🙈 🙉 🙊 
                            
-So this time we thought of a different kind of App to work on , it picks random profile pictures of FACN4 mates & it allows you to rate which picture you mostly like & so on.. so at last the most rated picture WINS !
+So this time we thought of a different kind of App to work on , it picks random profile pictures of FACsters & it allows you to rate which picture you like most & so on.. so at last the most rated picture WINS !
 Feeling like you wanna change your profile picture ? Oh don't worry you're not the only one feeling this way 😂
 Just keep it simple & genuine 😎
 It's so much FUN 😜
