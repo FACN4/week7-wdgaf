@@ -1,4 +1,4 @@
-# Week6-Rate-My-GIT
+# Rate My Git by Team Awesome - Sol, Denis & Matt
 
 Rate My Git >> Check it out at https://rate-my-git.herokuapp.com/ 
 
