@@ -8,7 +8,8 @@
     "dev": "nodemon src/server.js",
     "coverage": "nyc --reporter=lcov npm run test",
     "start": "node src/server.js",
-    "build": "babel public -d output --copy-files"
+    "build": "babel public -d output --copy-files",
+    "autobuild": "watch 'npm run build' public"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "nyc": "^12.0.2",
     "supertest": "^3.1.0",
     "tap-spec": "^5.0.0",
-    "tape": "^4.9.1"
+    "tape": "^4.9.1",
+    "watch": "^1.0.2"
   }
 }
