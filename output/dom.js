@@ -24,6 +24,12 @@ var warningMessage = function warningMessage(text, delay) {
   }
 };
 
+var removeChildren = function removeChildren(obj) {
+  while (obj.hasChildNodes()) {
+    obj.removeChild(obj.firstChild);
+  }
+};
+
 // Fn to set up a new quiz on the screen
 var newQuiz = function newQuiz() {
   getQuiz(function (err, userObjects) {
@@ -35,24 +41,33 @@ var newQuiz = function newQuiz() {
       user1.setAttribute('globaluserindex', '0');
       user1Name.textContent = userObjects.user1.git_username;
       user1Img.src = userObjects.user1.git_photo_url;
+      user1Img.alt = String(userObjects.user1.git_username) + ' GIT Profile Photo';
       user2.setAttribute('globaluserindex', '1');
       user2Name.textContent = userObjects.user2.git_username;
+      user2Img.alt = String(userObjects.user2.git_username) + ' GIT Profile Photo';
       user2Img.src = userObjects.user2.git_photo_url;
     }
   });
 };
 
 // Fn to set up the wall of fame/shame
-var generateWallHTML = function generateWallHTML(wallObj, ulId) {
+var generateWallHTML = function generateWallHTML(wallObj, ulId, heading) {
+  removeChildren(ulId);
+  var node = document.createElement('LI'); // Create a <li> node
+  var header2 = document.createElement('h2');
+  header2.textContent = heading;
+  node.appendChild(header2); // Append the text to <li>
+  ulId.appendChild(node);
   wallObj.forEach(function (user, counter) {
-    var node = document.createElement('LI'); // Create a <li> node
+    var innerNode = document.createElement('LI'); // Create a <li> node
     var image = document.createElement('IMG');
     var header = document.createElement('h3');
     header.textContent = String(counter + 1) + '.  ' + String(user.git_username);
     image.src = user.git_photo_url;
-    node.appendChild(image);
-    node.appendChild(header); // Append the text to <li>
-    ulId.appendChild(node);
+    image.alt = String(user.git_username) + ' GIT Profile Photo';
+    innerNode.appendChild(image);
+    innerNode.appendChild(header); // Append the text to <li>
+    ulId.appendChild(innerNode);
   });
 };
 
@@ -66,8 +81,8 @@ var newWalls = function newWalls() {
 
       var wallOfFameUL = document.getElementById('wall-of-fame');
       var wallOfShameUL = document.getElementById('wall-of-shame');
-      generateWallHTML(wallOfFame, wallOfFameUL);
-      generateWallHTML(wallOfShame, wallOfShameUL);
+      generateWallHTML(wallOfFame, wallOfFameUL, 'Wall of Fame');
+      generateWallHTML(wallOfShame, wallOfShameUL, 'Wall of Shame');
     }
   });
 };
@@ -87,6 +102,7 @@ var postQuizResults = function postQuizResults(winnerProp) {
     }
   });
   newQuiz();
+  newWalls();
 };
 
 user1.addEventListener('click', function () {

@@ -10,7 +10,6 @@ const user2 = document.getElementById('user2');
 const user2Img = document.getElementById('user2Img');
 const user2Name = document.getElementById('user2').getElementsByTagName('h2')[0];
 
-
 const warningMessage = (text, delay) => {
   const warningBar = document.getElementById('alert');
   const warningText = warningBar.childNodes[1];
@@ -20,6 +19,12 @@ const warningMessage = (text, delay) => {
     setTimeout(() => {
       warningBar.style.visibility = 'hidden';
     }, delay);
+  }
+};
+
+const removeChildren = (obj) => {
+  while (obj.hasChildNodes()) {
+    obj.removeChild(obj.firstChild);
   }
 };
 
@@ -34,27 +39,35 @@ const newQuiz = () => {
       user1.setAttribute('globaluserindex', '0');
       user1Name.textContent = userObjects.user1.git_username;
       user1Img.src = userObjects.user1.git_photo_url;
+      user1Img.alt = `${userObjects.user1.git_username} GIT Profile Photo`;
       user2.setAttribute('globaluserindex', '1');
       user2Name.textContent = userObjects.user2.git_username;
+      user2Img.alt = `${userObjects.user2.git_username} GIT Profile Photo`;
       user2Img.src = userObjects.user2.git_photo_url;
     }
   });
 };
 
 // Fn to set up the wall of fame/shame
-const generateWallHTML = (wallObj, ulId) => {
+const generateWallHTML = (wallObj, ulId, heading) => {
+  removeChildren(ulId);
+  const node = document.createElement('LI'); // Create a <li> node
+  const header2 = document.createElement('h2');
+  header2.textContent = heading;
+  node.appendChild(header2); // Append the text to <li>
+  ulId.appendChild(node);
   wallObj.forEach((user, counter) => {
-    const node = document.createElement('LI'); // Create a <li> node
+    const innerNode = document.createElement('LI'); // Create a <li> node
     const image = document.createElement('IMG');
     const header = document.createElement('h3');
     header.textContent = `${counter + 1}.  ${user.git_username}`;
     image.src = user.git_photo_url;
-    node.appendChild(image);
-    node.appendChild(header); // Append the text to <li>
-    ulId.appendChild(node);
+    image.alt = `${user.git_username} GIT Profile Photo`;
+    innerNode.appendChild(image);
+    innerNode.appendChild(header); // Append the text to <li>
+    ulId.appendChild(innerNode);
   });
 };
-
 
 const newWalls = () => {
   getWalls((err, wallsObject) => {
@@ -64,8 +77,8 @@ const newWalls = () => {
       const { wallOfFame, wallOfShame } = wallsObject;
       const wallOfFameUL = document.getElementById('wall-of-fame');
       const wallOfShameUL = document.getElementById('wall-of-shame');
-      generateWallHTML(wallOfFame, wallOfFameUL);
-      generateWallHTML(wallOfShame, wallOfShameUL);
+      generateWallHTML(wallOfFame, wallOfFameUL, 'Wall of Fame');
+      generateWallHTML(wallOfShame, wallOfShameUL, 'Wall of Shame');
     }
   });
 };
@@ -85,6 +98,7 @@ const postQuizResults = (winnerProp) => {
     }
   });
   newQuiz();
+  newWalls();
 };
 
 user1.addEventListener('click', () => postQuizResults('user1'), true);
