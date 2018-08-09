@@ -24,6 +24,12 @@ var warningMessage = function warningMessage(text, delay) {
   }
 };
 
+var removeChildren = function removeChildren(obj) {
+  while (obj.hasChildNodes()) {
+    obj.removeChild(obj.firstChild);
+  }
+};
+
 // Fn to set up a new quiz on the screen
 var newQuiz = function newQuiz() {
   getQuiz(function (err, userObjects) {
@@ -43,7 +49,13 @@ var newQuiz = function newQuiz() {
 };
 
 // Fn to set up the wall of fame/shame
-var generateWallHTML = function generateWallHTML(wallObj, ulId) {
+var generateWallHTML = function generateWallHTML(wallObj, ulId, heading) {
+  removeChildren(ulId);
+  var node = document.createElement('LI'); // Create a <li> node
+  var header2 = document.createElement('h2');
+  header2.textContent = heading;
+  node.appendChild(header2); // Append the text to <li>
+  ulId.appendChild(node);
   wallObj.forEach(function (user, counter) {
     var node = document.createElement('LI'); // Create a <li> node
     var image = document.createElement('IMG');
@@ -66,8 +78,8 @@ var newWalls = function newWalls() {
 
       var wallOfFameUL = document.getElementById('wall-of-fame');
       var wallOfShameUL = document.getElementById('wall-of-shame');
-      generateWallHTML(wallOfFame, wallOfFameUL);
-      generateWallHTML(wallOfShame, wallOfShameUL);
+      generateWallHTML(wallOfFame, wallOfFameUL, 'Wall of Fame');
+      generateWallHTML(wallOfShame, wallOfShameUL, 'Wall of Shame');
     }
   });
 };
@@ -87,6 +99,7 @@ var postQuizResults = function postQuizResults(winnerProp) {
     }
   });
   newQuiz();
+  newWalls();
 };
 
 user1.addEventListener('click', function () {
