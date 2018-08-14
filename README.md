@@ -1,42 +1,15 @@
-# Rate My Git by Team Awesome - Sol, Denis & Matt
+# Rate My Git 2.0 by I Don't Give a FAC - Ben, Suha & Matt
 
-Rate My Git >> Check it out at https://rate-my-git.herokuapp.com/ 
+Rate My Git 2 >> https://rate-my-git-2.herokuapp.com/
 
-# **TEAM AWESOME IS DOING AWESOME** 🙈 🙉 🙊 
-                           
-So this time we thought of a different kind of App to work on , it picks random profile pictures of FACsters & it allows you to rate which picture you like most & so on.. so at last the most rated picture WINS !
-Feeling like you wanna change your profile picture ? Oh don't worry you're not the only one feeling this way 😂
-Just keep it simple & genuine 😎
-It's so much FUN 😜
+This project is an extension on Team Awesome's project from Week 6. See the original site here >> https://rate-my-git.herokuapp.com/
+See the original repository here >> https://github.com/FACN4/Week6-Rate-My-GIT
 
-![](https://i.imgur.com/lyoT6vu.jpg)
+- **Additional Features**
+  - **User signup and login page**
+  - **Username and profile pic displayed in the top right of the main page**
+  - **Each user can review their own voting history**
 
+![](https://i.imgur.com/GHcn82q.png)
 
-
-
-
-* **So What's Different? What's New** ?
-
-  * **Using a database set locally & on Heruku for storing our Data instead of only keeping it in a Json file.**
- 
-  * **Using Architecture - Schemas** >> Link to [project diagrams (Schema, Wireframe, Architecture)](https://www.lucidchart.com/invitations/accept/d92c2a07-f5b9-4232-beca-98c1db56c5e9)
-
-  * **Migration rather than Integration .**
- 
-  * **Keeping the app secured as never attempted before.**
-   
-   
-  ![](https://i.imgur.com/WPtYQoc.png)
- 
- 
- 
- ![](https://i.imgur.com/VlcbQDA.png)
-
-
-![wireframe](https://user-images.githubusercontent.com/28222381/43863450-6312eeba-9b65-11e8-9f38-56cce2ac083d.png)
-
-
-                                  
-   # & Definitely Keeping it Simple & Aimful👌
-  
-  
+![](https://i.imgur.com/F9NmxY0.png)
