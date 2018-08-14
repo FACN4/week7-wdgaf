@@ -43,7 +43,7 @@ CREATE TABLE ratings (
   winner_elo INTEGER NOT NULL,
   loser_id INTEGER NOT NULL REFERENCES git_profiles(user_id),
   loser_elo INTEGER NOT NULL,
-  rater_id INTEGER NOT NULL REFERENCES users(id)
+  rater_id INTEGER REFERENCES users(id)
 );
 
 COMMIT;
