@@ -2,7 +2,6 @@ const test = require('tape');
 const supertest = require('supertest');
 const router = require('../src/router');
 
-
 test('--------------router_tests.js----------tape is working', (t) => {
   t.ok(true);
   t.end();
@@ -43,7 +42,7 @@ test('A URL not found returns 404', (t) => {
 
 test('JavaScript files should return a 200', (t) => {
   supertest(router)
-    .get('/dom.js')
+    .get('/js/dom.js')
     .expect(200)
     .expect('Content-Type', /javascript/)
     .end((err) => {
