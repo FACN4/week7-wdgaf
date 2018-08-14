@@ -4,7 +4,7 @@ const dbConnection = require('../database/dbconnection.js');
 const updateElo = (userId, eloNew, cb) => {
   // The maximum change in ELO ranking is 200. Additional conditions are put
   // in place to prevent malicous users from giving themselves higher ranking
-  const queryString = `UPDATE users SET elo_ranking = $1
+  const queryString = `UPDATE git_profiles SET elo_ranking = $1
                       WHERE user_id = $2
                       AND elo_ranking + 200 > $1
                       AND elo_ranking - 200 < $1`;
