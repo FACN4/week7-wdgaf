@@ -9,6 +9,13 @@ CREATE TABLE users (
   git_username VARCHAR(255)
 );
 
+DROP TABLE IF EXISTS cohorts CASCADE;
+
+CREATE TABLE cohorts (
+  id SERIAL PRIMARY KEY,
+  fac_name VARCHAR (255) NOT NULL
+);
+
 DROP TABLE IF EXISTS git_profiles CASCADE;
 
 CREATE TABLE git_profiles (
@@ -17,14 +24,7 @@ CREATE TABLE git_profiles (
   git_profile_url VARCHAR (2083) NOT NULL,
   git_photo_url VARCHAR (2083) NOT NULL,
   elo_ranking INTEGER DEFAULT 1500,
-  fac_id INTEGER NOT NULL REFERENCES cohorts(id)
-);
-
-DROP TABLE IF EXISTS cohorts CASCADE;
-
-CREATE TABLE cohorts (
-  id SERIAL PRIMARY KEY,
-  fac_name VARCHAR (255) NOT NULL
+  fac_id INTEGER REFERENCES cohorts(id)
 );
 
 DROP TABLE IF EXISTS fac_preferences CASCADE;
