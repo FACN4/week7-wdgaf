@@ -11,4 +11,17 @@ const getUserData = (cb) => {
   });
 };
 
-module.exports = { getUserData };
+const getHash = (cb, userName) => {
+  dbConnection.query(
+    'SELECT password FROM users WHERE $userName ORDER BY elo_ranking DESC',
+    (err, res) => {
+      if (err) {
+        cb(err);
+      } else {
+        cb(null, res.rows);
+      }
+    },
+  );
+};
+
+module.exports = { getUserData, getHash };

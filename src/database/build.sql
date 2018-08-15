@@ -5,8 +5,7 @@ DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   email VARCHAR (255) NOT NULL,
-  salt VARCHAR NOT NULL,
-  passhash VARCHAR NOT NULL,
+  password VARCHAR NOT NULL,
   git_username VARCHAR(255)
 );
 
