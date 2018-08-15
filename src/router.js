@@ -18,6 +18,10 @@ const router = (request, response) => {
   const { url } = request;
   if (url === '/') {
     handlers.homePageHandler(response);
+  } else if (url.includes('/login-failed') && request.method === 'GET') {
+    handlers.loginPageHandler(response);
+  } else if (url.includes('/login-failed') && request.method === 'POST') {
+    handlers.postLoginHandler(request, response);
   } else if (url.includes('/login') && request.method === 'GET') {
     handlers.loginPageHandler(response);
   } else if (url.includes('/login') && request.method === 'POST') {

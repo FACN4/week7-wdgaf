@@ -15,7 +15,7 @@ const getUserData = (cb) => {
 
 const getHash = (userEmail, cb) => {
   dbConnection.query(`SELECT password FROM users WHERE email = '${userEmail}'`, (err, res) => {
-    if (err) {
+    if (err || res.rows.length === 0) {
       console.log('reject');
       cb(err);
     } else {
