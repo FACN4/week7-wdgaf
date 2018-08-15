@@ -1,4 +1,8 @@
+const cookie = require('cookie');
+const { verify } = require('jsonwebtoken');
 const handlers = require('./handlers/handlers.js');
+
+const SECRET = 'hcdcjdhcdcdchdohcioj';
 
 const assetURLs = [
   '/index.html',
@@ -17,7 +21,23 @@ on functions in the handlers file to produce a response. */
 const router = (request, response) => {
   const { url } = request;
   if (url === '/') {
-    handlers.homePageHandler(response);
+    console.log('home!!');
+    if (request.headers.cookie) {
+      console.log('cookie passes');
+      const { jwt } = cookie.parse(request.headers.cookie);
+      verify(jwt, SECRET, (err) => {
+        if (err) {
+          console.log('failed');
+          handlers.loginPageHandler(response);
+        } else {
+          console.log('login success');
+
+          handlers.homePageHandler(response);
+        }
+      });
+    } else {
+      handlers.loginPageHandler(response);
+    }
   } else if (url.includes('/login-failed') && request.method === 'GET') {
     handlers.loginPageHandler(response);
   } else if (url.includes('/login-failed') && request.method === 'POST') {

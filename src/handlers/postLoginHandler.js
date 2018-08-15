@@ -18,8 +18,8 @@ const postLoginHandler = (request, response) => {
       bcrypt
         .compare(userData.password, hash)
         .then((res) => {
-          console.log(res);
           if (res === true) {
+            console.log('here');
             const cookie = sign(userData.email, SECRET);
             response.writeHead(302, { Location: '/', 'Set-Cookie': `jwt=${cookie}; HttpOnly` });
             response.end();
@@ -29,6 +29,8 @@ const postLoginHandler = (request, response) => {
           }
         })
         .catch((err2) => {
+          console.log('failed');
+
           response.writeHead(401, { 'Content-Type': 'text/plain' });
           response.end('Password is incorrect. Please try again');
         });

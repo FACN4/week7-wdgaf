@@ -35,22 +35,5 @@ var form = document.getElementById('loginForm');
 //     }
 //   });
 // });
-// =======
-// form.addEventListener('submit', function (event) {
-//   event.preventDefault();
-//   console.log('Made it!');
-//   var loginDetails = {
-//     email: email.value,
-//     password: password.value
-//   };
-//   loginPostXhr(loginDetails, function (err, res) {
-//     if (err) {
-//       alert.textContent('Sorry, your login failed, please try again');
-//     } else {
-//       console.log('login success!');
-//     }
-//   });
-// });
-// >>>>>>> master
 
 // form.addEventListener('submit', sendLogin);
