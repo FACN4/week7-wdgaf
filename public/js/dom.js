@@ -27,12 +27,6 @@ const removeChildren = (obj) => {
   }
 };
 
-const getUserInfo = () => {
-  getUserInfo((err) => {
-    console.log(err);
-  });
-};
-
 const generateUserData = () => {
   getUserInfo((err, userData) => {
     console.log(userData);

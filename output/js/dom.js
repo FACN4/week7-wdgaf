@@ -29,12 +29,6 @@ var removeChildren = function removeChildren(obj) {
   }
 };
 
-var getUserInfo = function getUserInfo() {
-  getUserInfo(function (err) {
-    console.log(err);
-  });
-};
-
 var generateUserData = function generateUserData() {
   getUserInfo(function (err, userData) {
     console.log(userData);
