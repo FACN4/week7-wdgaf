@@ -9,6 +9,7 @@ const assetURLs = [
   '/js/dom.js',
   '/js/dom-signup.js',
   '/js/dom-login.js',
+  '/js/dom-votehistory.js',
   '/style.css',
   '/js/xhr.js',
   '/favicon.ico',
@@ -55,6 +56,10 @@ const router = (request, response) => {
     handlers.assetsHandler(url, response);
   } else if (url.includes('get-quiz')) {
     handlers.getQuizHandler(request, response);
+  } else if (url.includes('vote-history')) {
+    handlers.getVoteHistoryHandler(request, response);
+  } else if (url.includes('get-user-data')) {
+    handlers.getUserDataHandler(request, response);
   } else if (url.includes('get-walls')) {
     handlers.getWallsHandler(request, response);
   } else if (url.includes('post-quiz-result')) {
