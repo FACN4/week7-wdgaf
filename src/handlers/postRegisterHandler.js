@@ -11,10 +11,12 @@ const postRegisterHandler = (request, response) => {
   /* Method to trigger when all data has been received */
   request.on('end', () => {
     const userData = JSON.parse(allData);
+    console.log(userData);
     bcrypt
       .hash(userData.password, 10)
-      .then(hash => postNewUser(userData.email, hash, userData.giterusername))
+      .then(hash => postNewUser(userData.email, hash, userData.git_username))
       .then(() => {
+        console.log('success');
         response.writeHead(200);
         response.end();
       })

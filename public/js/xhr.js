@@ -19,7 +19,7 @@ const postQuizRes = (winnerLoserObj, cb) => {
 };
 
 /* Function to send signup details */
-const signupPostXhr = function registerPostXhr(signupDetails, cb) {
+const signupPostXhr = (signupDetails, cb) => {
   const xhr = new XMLHttpRequest();
   const url = '/sign-up';
   xhr.onreadystatechange = function () {

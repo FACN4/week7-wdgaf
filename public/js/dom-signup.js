@@ -3,11 +3,12 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirmPassword');
 const username = document.getElementById('gitUsername');
-const form = document.getElementsByTagName('form')[0];
-const signupAlert = document.getElementsByTagName('signupAlert');
+const signUpBtn = document.getElementById('signUpBtn');
+const signupAlert = document.getElementById('signupAlert');
 const emailErr = document.getElementById('emailErr');
 const passwordErr = document.getElementById('passwordErr');
 const confirmErr = document.getElementById('confirmErr');
+const form = document.getElementById('form');
 
 const checkEmail = function () {
   if (email.validity.typeMismatch) {
@@ -55,6 +56,8 @@ password.addEventListener('focusout', checkPw);
 confirmPassword.addEventListener('focusout', checkConfirmPw);
 
 form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  console.log('Made it!');
   if (!checkEmail()) {
     event.preventDefault();
   }
@@ -69,10 +72,11 @@ form.addEventListener('submit', (event) => {
       password: password.value,
       git_username: username.value,
     };
-    signupPostXhr(signupDetails, (err, signupSuccess) => {
+    signupPostXhr(signupDetails, (err) => {
       if (err) {
         signupAlert.textContent = 'Registration failed. Please try again';
       } else {
+        console.log('success!');
         signupAlert.textContent = 'Registration success! Please go to the login page.';
       }
     });
