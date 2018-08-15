@@ -41,6 +41,28 @@ var signupPostXhr = function () {
 
   return registerPostXhr;
 }();
+
+/* Function to send login deatails.. */
+var loginPostXhr = function () {
+  function loginrPostXhr(loginDetails, cb) {
+    var xhr = new XMLHttpRequest();
+    var url = '/login';
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          cb(null);
+        } else {
+          cb(new Error('Your login request could not be handled'));
+        }
+      }
+    };
+    xhr.open('POST', url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(loginDetails));
+  }
+
+  return loginrPostXhr;
+}();
 /* Generic xhr function used lower in this file */
 var xhrGET = function xhrGET(url, errMessage, cb) {
   var xhr = new XMLHttpRequest();
