@@ -11,6 +11,7 @@ const homePageHandler = require('./homePageHandler.js');
 const postRegisterHandler = require('./postRegisterHandler');
 const postLoginHandler = require('./postLoginHandler');
 const postLogoutHandler = require('./postLogoutHandler');
+const loginFailedPageHandler = require('./loginFailedPageHandler');
 
 module.exports = {
   loginPageHandler,
@@ -24,4 +25,5 @@ module.exports = {
   postRegisterHandler,
   postLoginHandler,
   postLogoutHandler,
+  loginFailedPageHandler,
 };
