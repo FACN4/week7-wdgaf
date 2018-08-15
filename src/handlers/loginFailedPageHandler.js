@@ -3,8 +3,8 @@ const path = require('path');
 
 /* Function to handle requests for the homePage and send back appropriate response */
 
-const loginPageHandler = (response) => {
-  const filePath = path.join(__dirname, '..', '..', 'output', 'login.-failedhtml');
+const loginFailedPageHandler = (response) => {
+  const filePath = path.join(__dirname, '..', '..', 'output', 'login-failed.html');
   fs.readFile(filePath, (error, file) => {
     if (error) {
       response.writeHead(500, { 'Content-Type': 'text/html' });

@@ -35,25 +35,6 @@ const signupPostXhr = (signupDetails, cb) => {
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify(signupDetails));
 };
-/* Function to send login deatails.. */
-const loginPostXhr = (loginDetails, cb) => {
-  console.log(loginDetails);
-  const xhr = new XMLHttpRequest();
-  const url = '/login';
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        cb(null);
-      } else {
-        cb(new Error('Your login request could not be handled'));
-      }
-    }
-  };
-  xhr.open('POST', url, true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send(JSON.stringify(loginDetails));
-};
-
 // Function to logout the current user//
 const logoutPostXhr = (cb) => {
   const xhr = new XMLHttpRequest();

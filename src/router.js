@@ -31,20 +31,23 @@ const router = (request, response) => {
           handlers.loginPageHandler(response);
         } else {
           console.log('login success');
-
           handlers.homePageHandler(response);
         }
       });
     } else {
       handlers.loginPageHandler(response);
     }
+  } else if (url === '/login-failed' && request.method === 'GET') {
+    handlers.loginFailedPageHandler(response);
+  } else if (url === '/login-failed' && request.method === 'POST') {
+    handlers.postLoginHandler(request, response);
   } else if (url.includes('/login-failed') && request.method === 'GET') {
     handlers.loginPageHandler(response);
   } else if (url.includes('/login-failed') && request.method === 'POST') {
     handlers.postLoginHandler(request, response);
-  } else if (url.includes('/login') && request.method === 'GET') {
+  } else if (url === '/login' && request.method === 'GET') {
     handlers.loginPageHandler(response);
-  } else if (url.includes('/login') && request.method === 'POST') {
+  } else if (url === '/login' && request.method === 'POST') {
     handlers.postLoginHandler(request, response);
   } else if (url.includes('/sign-up') && request.method === 'GET') {
     handlers.signUpHandler(response);

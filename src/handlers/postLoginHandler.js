@@ -24,15 +24,13 @@ const postLoginHandler = (request, response) => {
             response.writeHead(302, { Location: '/', 'Set-Cookie': `jwt=${cookie}; HttpOnly` });
             response.end();
           } else {
-            response.writeHead(302, { Location: '/login_failed' });
+            response.writeHead(302, { Location: '/login-failed' });
             response.end('');
           }
         })
         .catch((err2) => {
-          console.log('failed');
-
-          response.writeHead(401, { 'Content-Type': 'text/plain' });
-          response.end('Password is incorrect. Please try again');
+          response.writeHead(302, { Location: '/login-failed' });
+          response.end('');
         });
     });
   });
