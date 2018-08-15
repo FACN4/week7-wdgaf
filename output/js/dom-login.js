@@ -24,7 +24,6 @@ var form = document.getElementById('loginForm');
 form.addEventListener('submit', function (event) {
   event.preventDefault();
   console.log('Made it!');
-  event.preventDefault();
   var loginDetails = {
     email: email.value,
     password: password.value
