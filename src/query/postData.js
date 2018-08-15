@@ -29,7 +29,7 @@ const logRating = (user1Id, user1Elo, user2Id, user2Elo, cb) => {
   });
 };
 
-// Adds a user to the database called in pushRegisterHandler
+// Adds a user to the database called in postRegisterHandler
 
 const postNewUser = (email, password, git_username = '') => new Promise((resolve, reject) => {
   const queryString = 'INSERT INTO users (email, password, git_username) VALUES ($1, $2, $3)';
