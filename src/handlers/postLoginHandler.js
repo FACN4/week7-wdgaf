@@ -4,7 +4,8 @@ const { parse } = require('cookie');
 const { sign, verify } = require('jsonwebtoken');
 const { getHash } = require('../query/getData');
 
-const SECRET = 'hcdcjdhcdcdchdohcioj';
+const { SECRET } = process.env;
+
 const postLoginHandler = (request, response) => {
   /* Using post method so data is coming in streams */
   let allData = '';
@@ -19,7 +20,6 @@ const postLoginHandler = (request, response) => {
         .compare(userData.password, hash)
         .then((res) => {
           if (res === true) {
-            console.log('here');
             const cookie = sign(userData.email, SECRET);
             response.writeHead(302, { Location: '/', 'Set-Cookie': `jwt=${cookie}; HttpOnly` });
             response.end();
