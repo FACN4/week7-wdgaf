@@ -21,20 +21,19 @@ var form = document.getElementById('loginForm');
 //   });
 // };
 
-form.addEventListener('submit', function (event) {
-  event.preventDefault();
-  console.log('Made it!');
-  var loginDetails = {
-    email: email.value,
-    password: password.value
-  };
-  loginPostXhr(loginDetails, function (err, res) {
-    if (err) {
-      alert.textContent('Sorry, your login failed, please try again');
-    } else {
-      console.log('login success!');
-    }
-  });
-});
+// form.addEventListener('submit', (event) => {
+//   event.preventDefault();
+//   const loginDetails = {
+//     email: email.value,
+//     password: password.value,
+//   };
+//   loginPostXhr(loginDetails, (err, res) => {
+//     if (err) {
+//       alert.textContent('Sorry, your login failed, please try again');
+//     } else {
+//       window.location.replace('/');
+//     }
+//   });
+// });
 
 // form.addEventListener('submit', sendLogin);

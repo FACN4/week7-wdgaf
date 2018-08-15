@@ -12,13 +12,13 @@
   <section class="signIn">
     <h1>Sign in</h1>
 
-    <form id="loginForm" class="signIn__form" novalidate>
+    <form id="loginForm" method="post" class="signIn__form" novalidate>
       <label for="email">Email:
-        <input id="email" type="email" required/>
+        <input id="email" name="email" type="email" required/>
       </label>
       <p id="emailErr" class="error"></p>
       <label for="password">Password:
-        <input id="password" type="password" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" />
+        <input id="password" name="password" type="password" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" />
       </label>
       <p id="passwordErr" class="error"></p>
       <button type="submit">Log in</button>
