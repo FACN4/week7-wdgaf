@@ -21,9 +21,14 @@ const postRegisterHandler = (request, response) => {
         response.end();
       })
       .catch((err) => {
-        console.log(err);
-        response.writeHead(500, { 'Content-Type': 'text/plain' });
-        response.end('error, could not succesfully add user. Please try again later.');
+        console.log(err.code);
+        if (err.code === '23505') {
+          response.writeHead(500, { 'Content-Type': 'text/plain' });
+          response.end('Sorry, the email address already exists. Please choose another.');
+        } else {
+          response.writeHead(500, { 'Content-Type': 'text/plain' });
+          response.end('error, could not succesfully add user. Please try again later.');
+        }
       });
   });
 };

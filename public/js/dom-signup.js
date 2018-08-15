@@ -74,7 +74,7 @@ form.addEventListener('submit', (event) => {
     };
     signupPostXhr(signupDetails, (err) => {
       if (err) {
-        signupAlert.textContent = 'Registration failed. Please try again';
+        signupAlert.textContent = err;
       } else {
         console.log('success!');
         signupAlert.textContent = 'Registration success! Please go to the login page.';
