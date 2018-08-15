@@ -3,6 +3,8 @@ const handlers = require('./handlers/handlers.js');
 const assetURLs = [
   '/index.html',
   '/js/dom.js',
+  '/js/dom-signup.js',
+  '/js/dom-login.js',
   '/style.css',
   '/js/xhr.js',
   '/favicon.ico',
@@ -16,10 +18,14 @@ const router = (request, response) => {
   const { url } = request;
   if (url === '/') {
     handlers.homePageHandler(response);
-  } else if (url.includes('/login')) {
+  } else if (url.includes('/login') && request.method === 'GET') {
     handlers.loginPageHandler(response);
-  } else if (url.includes('/sign-up')) {
+  } else if (url.includes('/login') && request.method === 'POST') {
+    handlers.postLoginHandler(request, response);
+  } else if (url.includes('/sign-up') && request.method === 'GET') {
     handlers.signUpHandler(response);
+  } else if (url.includes('/sign-up') && request.method === 'POST') {
+    handlers.postRegisterHandler(request, response);
   } else if (assetURLs.includes(url)) {
     handlers.assetsHandler(url, response);
   } else if (url.includes('get-quiz')) {

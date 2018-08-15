@@ -19,7 +19,7 @@ const postQuizRes = (winnerLoserObj, cb) => {
 };
 
 /* Function to send signup details */
-const signupPostXhr = function registerPostXhr(signupDetails, cb) {
+const signupPostXhr = (signupDetails, cb) => {
   const xhr = new XMLHttpRequest();
   const url = '/sign-up';
   xhr.onreadystatechange = function () {
@@ -35,9 +35,9 @@ const signupPostXhr = function registerPostXhr(signupDetails, cb) {
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify(signupDetails));
 };
-
 /* Function to send login deatails.. */
-const loginPostXhr = function loginrPostXhr(loginDetails, cb) {
+const loginPostXhr = (loginDetails, cb) => {
+  console.log(loginDetails);
   const xhr = new XMLHttpRequest();
   const url = '/login';
   xhr.onreadystatechange = function () {
