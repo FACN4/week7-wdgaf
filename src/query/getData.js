@@ -13,17 +13,15 @@ const getUserData = (cb) => {
 
 // Gets the user's hash from the db and returns it to postLoginHandler
 
-const getHash = (cb, userName) => new Promise((resolve, reject) => {
-  dbConnection.query(
-    `SELECT password FROM users WHERE ${userName} ORDER BY elo_ranking DESC`,
-    (err, res) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(res.rows);
-      }
-    },
-  );
-});
+const getHash = (userEmail, cb) => {
+  dbConnection.query(`SELECT password FROM users WHERE email = '${userEmail}'`, (err, res) => {
+    if (err) {
+      console.log('reject');
+      cb(err);
+    } else {
+      cb(null, res.rows[0].password);
+    }
+  });
+};
 
 module.exports = { getUserData, getHash };

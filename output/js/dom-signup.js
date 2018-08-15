@@ -5,7 +5,6 @@ var email = document.getElementById('email');
 var password = document.getElementById('password');
 var confirmPassword = document.getElementById('confirmPassword');
 var username = document.getElementById('gitUsername');
-var signUpBtn = document.getElementById('signUpBtn');
 var signupAlert = document.getElementById('signupAlert');
 var emailErr = document.getElementById('emailErr');
 var passwordErr = document.getElementById('passwordErr');
