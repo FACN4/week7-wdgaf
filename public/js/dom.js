@@ -8,6 +8,7 @@ const user1Img = document.getElementById('user1Img');
 const user1Name = document.getElementById('user1').getElementsByTagName('h2')[0];
 const user2 = document.getElementById('user2');
 const user2Img = document.getElementById('user2Img');
+const username = document.getElementById('username');
 const user2Name = document.getElementById('user2').getElementsByTagName('h2')[0];
 const warningMessage = (text, delay) => {
   const warningBar = document.getElementById('alert');
@@ -29,7 +30,7 @@ const removeChildren = (obj) => {
 
 const generateUserData = () => {
   getUserInfo((err, userData) => {
-    console.log(userData);
+    username.textContent = userData;
   });
 };
 
