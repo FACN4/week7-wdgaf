@@ -11,17 +11,25 @@ const postLoginHandler = (request, response) => {
   /* Method to trigger when all data has been received */
   request.on('end', () => {
     const userData = JSON.parse(allData);
-    const hash = getHash(userData.username);
-    bcrypt
-      .compare(userData.password, hash)
-      .then((res) => {
-        console.log(res, "It works, now let's think about tokens!!");
-      })
-      .catch((err) => {
-        console.log(err);
-        response.writeHead(401, { 'Content-Type': 'text/plain' });
-        response.end('Password is incorrect. Please try again');
-      });
+    getHash(userData.email, (err, hash) => {
+      console.log(hash, 'Im HASH');
+      bcrypt
+        .compare(userData.password, hash)
+        .then((res) => {
+          console.log(res);
+          if (res === true) {
+            response.writeHead(200, { 'Content-Type': 'text/plain' });
+            response.end();
+          } else {
+            response.writeHead(401, { 'Content-Type': 'text/plain' });
+            response.end('Password is incorrect. Please try again');
+          }
+        })
+        .catch((err2) => {
+          response.writeHead(401, { 'Content-Type': 'text/plain' });
+          response.end('Password is incorrect. Please try again');
+        });
+    });
   });
 };
 

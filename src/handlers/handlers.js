@@ -8,6 +8,8 @@ const getQuizHandler = require('./getQuizHandler.js');
 const getWallsHandler = require('./getWallsHandler.js');
 const signUpHandler = require('./signUpHandler.js');
 const homePageHandler = require('./homePageHandler.js');
+const postRegisterHandler = require('./postRegisterHandler');
+const postLoginHandler = require('./postLoginHandler');
 
 module.exports = {
   loginPageHandler,
@@ -18,4 +20,6 @@ module.exports = {
   getWallsHandler,
   signUpHandler,
   homePageHandler,
+  postRegisterHandler,
+  postLoginHandler,
 };
