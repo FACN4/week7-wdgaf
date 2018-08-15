@@ -8,6 +8,7 @@ const user1Img = document.getElementById('user1Img');
 const user1Name = document.getElementById('user1').getElementsByTagName('h2')[0];
 const user2 = document.getElementById('user2');
 const user2Img = document.getElementById('user2Img');
+const username = document.getElementById('username');
 const user2Name = document.getElementById('user2').getElementsByTagName('h2')[0];
 const warningMessage = (text, delay) => {
   const warningBar = document.getElementById('alert');
@@ -25,6 +26,12 @@ const removeChildren = (obj) => {
   while (obj.hasChildNodes()) {
     obj.removeChild(obj.firstChild);
   }
+};
+
+const generateUserData = () => {
+  getUserInfo((err, userData) => {
+    username.textContent = userData;
+  });
 };
 
 // Fn to set up a new quiz on the screen
@@ -85,6 +92,7 @@ const newWalls = () => {
 window.addEventListener('load', () => {
   newQuiz();
   newWalls();
+  generateUserData();
 });
 
 const postQuizResults = (winnerProp) => {

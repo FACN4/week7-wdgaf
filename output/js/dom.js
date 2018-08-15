@@ -10,6 +10,7 @@ var user1Img = document.getElementById('user1Img');
 var user1Name = document.getElementById('user1').getElementsByTagName('h2')[0];
 var user2 = document.getElementById('user2');
 var user2Img = document.getElementById('user2Img');
+var username = document.getElementById('username');
 var user2Name = document.getElementById('user2').getElementsByTagName('h2')[0];
 var warningMessage = function warningMessage(text, delay) {
   var warningBar = document.getElementById('alert');
@@ -27,6 +28,12 @@ var removeChildren = function removeChildren(obj) {
   while (obj.hasChildNodes()) {
     obj.removeChild(obj.firstChild);
   }
+};
+
+var generateUserData = function generateUserData() {
+  getUserInfo(function (err, userData) {
+    username.textContent = userData;
+  });
 };
 
 // Fn to set up a new quiz on the screen
@@ -89,6 +96,7 @@ var newWalls = function newWalls() {
 window.addEventListener('load', function () {
   newQuiz();
   newWalls();
+  generateUserData();
 });
 
 var postQuizResults = function postQuizResults(winnerProp) {
