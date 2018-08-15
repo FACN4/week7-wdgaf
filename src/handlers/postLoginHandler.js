@@ -28,7 +28,7 @@ const postLoginHandler = (request, response) => {
             response.end('');
           }
         })
-        .catch(err2) => {
+        .catch((err2) => {
           response.writeHead(302, { Location: '/login-failed' });
           response.end('');
         });
