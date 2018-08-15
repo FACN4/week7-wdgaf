@@ -13,6 +13,7 @@ const postLoginHandler = require('./postLoginHandler');
 const postLogoutHandler = require('./postLogoutHandler');
 const loginFailedPageHandler = require('./loginFailedPageHandler');
 const noCookieHandler = require('./noCookieHandler');
+const getUserDataHandler = require('./getUserDataHandler');
 
 module.exports = {
   loginPageHandler,
@@ -28,4 +29,5 @@ module.exports = {
   postLogoutHandler,
   loginFailedPageHandler,
   noCookieHandler,
+  getUserDataHandler,
 };

@@ -18,28 +18,35 @@ const postQuizRes = (winnerLoserObj, cb) => {
   xhr.send(JSON.stringify(winnerLoserObj));
 };
 
-/* Function to send signup details */
-const signupPostXhr = (signupDetails, cb) => {
+/* Function to get user details details */
+const getUserInfo = cb => {
+  const url = '/get-user-data';
+  const errMessage = 'Sorry, we cannot update the user info.';
+  xhrGET(url, errMessage, cb);
+};
+
+// Function to logout the current user//
+const logoutPostXhr = cb => {
   const xhr = new XMLHttpRequest();
-  const url = '/sign-up';
-  xhr.onreadystatechange = function () {
+  const url = '/logout';
+  xhr.onreadystatechange = function() {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
         cb(null);
       } else {
-        cb(new Error('Your register request could not be handled'));
+        cb(new Error('Your logout request could not be handled'));
       }
     }
   };
   xhr.open('POST', url, true);
   xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send(JSON.stringify(signupDetails));
+  xhr.send();
 };
-// Function to logout the current user//
-const logoutPostXhr = (cb) => {
+
+const logoutPostXhr = cb => {
   const xhr = new XMLHttpRequest();
   const url = '/logout';
-  xhr.onreadystatechange = function () {
+  xhr.onreadystatechange = function() {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
         cb(null);
@@ -69,13 +76,13 @@ const xhrGET = (url, errMessage, cb) => {
   xhr.send();
 };
 
-const getQuiz = (cb) => {
+const getQuiz = cb => {
   const url = '/get-quiz';
   const errMessage = 'Sorry, we were unable to bring you more GITs to compare.';
   xhrGET(url, errMessage, cb);
 };
 
-const getWalls = (cb) => {
+const getWalls = cb => {
   const url = '/get-walls';
   const errMessage = 'Sorry, we were unable provide a wall of fame/shame.';
   xhrGET(url, errMessage, cb);

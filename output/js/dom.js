@@ -29,6 +29,18 @@ var removeChildren = function removeChildren(obj) {
   }
 };
 
+var getUserInfo = function getUserInfo() {
+  getUserInfo(function (err) {
+    console.log(err);
+  });
+};
+
+var generateUserData = function generateUserData() {
+  getUserInfo(function (err, userData) {
+    console.log(userData);
+  });
+};
+
 // Fn to set up a new quiz on the screen
 var newQuiz = function newQuiz() {
   getQuiz(function (err, userObjects) {
@@ -89,6 +101,7 @@ var newWalls = function newWalls() {
 window.addEventListener('load', function () {
   newQuiz();
   newWalls();
+  generateUserData();
 });
 
 var postQuizResults = function postQuizResults(winnerProp) {

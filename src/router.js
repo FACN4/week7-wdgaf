@@ -55,6 +55,8 @@ const router = (request, response) => {
     handlers.assetsHandler(url, response);
   } else if (url.includes('get-quiz')) {
     handlers.getQuizHandler(request, response);
+  } else if (url.includes('get-user-data')) {
+    handlers.getUserDataHandler(request, response);
   } else if (url.includes('get-walls')) {
     handlers.getWallsHandler(request, response);
   } else if (url.includes('post-quiz-result')) {

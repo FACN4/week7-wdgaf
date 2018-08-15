@@ -27,6 +27,18 @@ const removeChildren = (obj) => {
   }
 };
 
+const getUserInfo = () => {
+  getUserInfo((err) => {
+    console.log(err);
+  });
+};
+
+const generateUserData = () => {
+  getUserInfo((err, userData) => {
+    console.log(userData);
+  });
+};
+
 // Fn to set up a new quiz on the screen
 const newQuiz = () => {
   getQuiz((err, userObjects) => {
@@ -85,6 +97,7 @@ const newWalls = () => {
 window.addEventListener('load', () => {
   newQuiz();
   newWalls();
+  generateUserData();
 });
 
 const postQuizResults = (winnerProp) => {
