@@ -21,21 +21,17 @@ on functions in the handlers file to produce a response. */
 const router = (request, response) => {
   const { url } = request;
   if (url === '/') {
-    console.log('home!!');
     if (request.headers.cookie) {
-      console.log('cookie passes');
       const { jwt } = cookie.parse(request.headers.cookie);
       verify(jwt, SECRET, (err) => {
         if (err) {
-          console.log('failed');
-          handlers.loginPageHandler(response);
+          handlers.noCookieHandler(response);
         } else {
-          console.log('login success');
           handlers.homePageHandler(response);
         }
       });
     } else {
-      handlers.loginPageHandler(response);
+      handlers.noCookieHandler(response);
     }
   } else if (url === '/login-failed' && request.method === 'GET') {
     handlers.loginFailedPageHandler(response);
