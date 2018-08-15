@@ -30,6 +30,8 @@ const router = (request, response) => {
     handlers.signUpHandler(response);
   } else if (url.includes('/sign-up') && request.method === 'POST') {
     handlers.postRegisterHandler(request, response);
+  } else if (url.includes('/logout') && request.method === 'POST') {
+    handlers.postLogoutHandler(response);
   } else if (assetURLs.includes(url)) {
     handlers.assetsHandler(url, response);
   } else if (url.includes('get-quiz')) {

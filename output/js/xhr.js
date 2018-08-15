@@ -55,6 +55,25 @@ var loginPostXhr = function loginPostXhr(loginDetails, cb) {
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify(loginDetails));
 };
+
+// Function to logout the current user//
+var logoutPostXhr = function logoutPostXhr(cb) {
+  var xhr = new XMLHttpRequest();
+  var url = '/logout';
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        cb(null);
+      } else {
+        cb(new Error('Your logout request could not be handled'));
+      }
+    }
+  };
+  xhr.open('POST', url, true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send();
+};
+
 /* Generic xhr function used lower in this file */
 var xhrGET = function xhrGET(url, errMessage, cb) {
   var xhr = new XMLHttpRequest();
