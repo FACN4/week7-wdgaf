@@ -31,15 +31,15 @@ const logRating = (user1Id, user1Elo, user2Id, user2Elo, cb) => {
 
 // Adds a user to the database called in pushRegisterHandler
 
-const postNewUser = (email, password, git_username = '') => {
+const postNewUser = (email, password, git_username = '') => new Promise((resolve, reject) => {
   const queryString = 'INSERT INTO users (email, password, git_username) VALUES ($1, $2, $3)';
   dbConnection.query(queryString, [email, password, git_username], (err) => {
     if (err) {
-      cb(err);
+      reject(err);
     } else {
-      cb(null);
+      resolve(null);
     }
   });
-};
+});
 
 module.exports = { updateElo, logRating, postNewUser };
