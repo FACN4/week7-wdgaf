@@ -18,8 +18,8 @@ const postLoginHandler = (request, response) => {
       bcrypt
         .compare(userData.password, hash)
         .then((res) => {
-          console.log(res);
           if (res === true) {
+            console.log('here');
             const cookie = sign(userData.email, SECRET);
             response.writeHead(302, { Location: '/', 'Set-Cookie': `jwt=${cookie}; HttpOnly` });
             response.end();
@@ -28,7 +28,7 @@ const postLoginHandler = (request, response) => {
             response.end('');
           }
         })
-        .catch((err2) => {
+        .catch(err2) => {
           response.writeHead(302, { Location: '/login-failed' });
           response.end('');
         });
