@@ -1,16 +1,15 @@
-'use strict';
-
 /* function for checking the user's validation */
-var email = document.getElementById('email');
-var password = document.getElementById('password');
-var confirmPassword = document.getElementById('confirmPassword');
-var form = document.getElementsByTagName('form')[0];
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+const confirmPassword = document.getElementById('confirmPassword');
+const username = document.getElementById('gitUsername');
+const form = document.getElementsByTagName('form')[0];
+const signupAlert = document.getElementsByTagName('signupAlert');
+const emailErr = document.getElementById('emailErr');
+const passwordErr = document.getElementById('passwordErr');
+const confirmErr = document.getElementById('confirmErr');
 
-var emailErr = document.getElementById('emailErr');
-var passwordErr = document.getElementById('passwordErr');
-var confirmErr = document.getElementById('confirmErr');
-
-var checkEmail = function checkEmail() {
+const checkEmail = function () {
   if (email.validity.typeMismatch) {
     console.log(email.validity.typeMismatch);
     displayErr(emailErr, 'Please enter a valid email address');
@@ -22,9 +21,12 @@ var checkEmail = function checkEmail() {
   }
 };
 
-var checkPw = function checkPw() {
+const checkPw = function () {
   if (password.validity.patternMismatch) {
-    displayErr(passwordErr, 'Password must contain at least eight characters, including one letter and one number');
+    displayErr(
+      passwordErr,
+      'Password must contain at least eight characters, including one letter and one number',
+    );
   } else if (password.validity.valueMissing) {
     displayErr(passwordErr, 'Please enter a password');
   } else {
@@ -33,7 +35,7 @@ var checkPw = function checkPw() {
   }
 };
 
-var checkConfirmPw = function checkConfirmPw() {
+const checkConfirmPw = function () {
   if (password.value != confirmPassword.value) {
     displayErr(confirmErr, 'Passwords do not match');
   } else if (confirmPassword.validity.valueMissing) {
@@ -52,7 +54,7 @@ email.addEventListener('focusout', checkEmail);
 password.addEventListener('focusout', checkPw);
 confirmPassword.addEventListener('focusout', checkConfirmPw);
 
-form.addEventListener('submit', function (event) {
+form.addEventListener('submit', (event) => {
   if (!checkEmail()) {
     event.preventDefault();
   }
@@ -61,5 +63,18 @@ form.addEventListener('submit', function (event) {
   }
   if (!checkConfirmPw()) {
     event.preventDefault();
+  } else {
+    const signupDetails = {
+      email: email.value,
+      password: password.value,
+      git_username: username.value,
+    };
+    signupPostXhr(signupDetails, (err, signupSuccess) => {
+      if (err) {
+        signupAlert.textContent = 'Registration failed. Please try again';
+      } else {
+        signupAlert.textContent = 'Registration success! Please go to the login page.';
+      }
+    });
   }
 });
