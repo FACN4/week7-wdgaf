@@ -11,17 +11,17 @@ const getUserData = (cb) => {
   });
 };
 
-const getHash = (cb, userName) => {
+const getHash = (cb, userName) => new Promise((resolve, reject) => {
   dbConnection.query(
-    'SELECT password FROM users WHERE $userName ORDER BY elo_ranking DESC',
+    `SELECT password FROM users WHERE ${userName} ORDER BY elo_ranking DESC`,
     (err, res) => {
       if (err) {
-        cb(err);
+        reject(err);
       } else {
-        cb(null, res.rows);
+        resolve(res.rows);
       }
     },
   );
-};
+});
 
 module.exports = { getUserData, getHash };

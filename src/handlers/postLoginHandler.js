@@ -15,7 +15,13 @@ const postLoginHandler = (request, response) => {
     bcrypt
       .compare(userData.password, hash)
       .then((res) => {
-        console.log(res, "It works, now let's think about tokens!!");
+        if (res === true) {
+          response.writeHead(200, { 'Content-Type': 'text/plain' });
+          response.end();
+        } else {
+          response.writeHead(401, { 'Content-Type': 'text/plain' });
+          response.end('Password is incorrect. Please try again');
+        }
       })
       .catch((err) => {
         console.log(err);
