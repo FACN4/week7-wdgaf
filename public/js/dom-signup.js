@@ -56,7 +56,6 @@ confirmPassword.addEventListener('focusout', checkConfirmPw);
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-  console.log('Made it!');
   if (!checkEmail()) {
     event.preventDefault();
   }
