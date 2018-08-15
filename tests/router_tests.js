@@ -9,11 +9,10 @@ test('--------------router_tests.js----------tape is working', (t) => {
 
 /* Supertest Tests on the frontend responses */
 
-test('Home route returns a 200 Ok', (t) => {
+test('Home route returns a 302 when not logged in Ok', (t) => {
   supertest(router)
     .get('/')
-    .expect(200)
-    .expect('Content-Type', /html/)
+    .expect(302)
     .end((err) => {
       t.error(err);
       t.end();
