@@ -18,6 +18,23 @@ const postQuizRes = (winnerLoserObj, cb) => {
   xhr.send(JSON.stringify(winnerLoserObj));
 };
 
+/* Function to send signup details */
+const signupPostXhr = function registerPostXhr(signupDetails, cb) {
+  const xhr = new XMLHttpRequest();
+  const url = '/sign-up';
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        cb(null);
+      } else {
+        cb(new Error('Your register request could not be handled'));
+      }
+    }
+  };
+  xhr.open('POST', url, true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify(signupDetails));
+};
 /* Generic xhr function used lower in this file */
 const xhrGET = (url, errMessage, cb) => {
   const xhr = new XMLHttpRequest();
