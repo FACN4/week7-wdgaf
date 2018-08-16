@@ -1,6 +1,7 @@
 const cookie = require('cookie');
 const { verify } = require('jsonwebtoken');
 
+const { SECRET } = process.env;
 const getUserDataHandler = (request, response) => {
   if (request.headers.cookie) {
     const { jwt } = cookie.parse(request.headers.cookie);
