@@ -6,6 +6,8 @@ Rate My Git 2 >> https://rate-my-git-2.herokuapp.com/
 This project is an extension on Team Awesome's project from Week 6. See the original site here >> https://rate-my-git.herokuapp.com/
 See the original repository here >> https://github.com/FACN4/Week6-Rate-My-GIT
 
+![](https://media.giphy.com/media/3orifayODwmlRQQ6Yw/giphy.gif)
+
 ## Additional Features
   - **User signup and login page**
   - **Username and profile pic displayed in the top right of the main page**
@@ -130,10 +132,11 @@ Taking on other people's work, learning it and building on it in a day and a hal
 
 ### Promises are cool but be careful to understand what modules are returning by default..
 
-https://media.giphy.com/media/l0K4fIEZ1FFiWFJPq/giphy.gif
+![](https://media.giphy.com/media/l0K4fIEZ1FFiWFJPq/giphy.gif)
 
 We tried to use promises as much as possible however some modules support callbacks by default and you need a different version for promises e.g. PG & pgpromises. Make sure you're using the right version of modules if you want to use promises!!
 
 BRING ON EXPRESS
 
+![](https://media.giphy.com/media/nNxT5qXR02FOM/giphy.gif)
 
