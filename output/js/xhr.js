@@ -3,9 +3,9 @@
 /* eslint-disable no-unused-vars */
 
 /* Function to get a request from the server based on the user's input */
-var postQuizRes = function postQuizRes(winnerLoserObj, cb) {
+var xhrPOST = function xhrPOST(url, body, cb) {
   var xhr = new XMLHttpRequest();
-  var url = '/post-quiz-result';
+  var urlExtension = url;
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
@@ -15,34 +15,19 @@ var postQuizRes = function postQuizRes(winnerLoserObj, cb) {
       }
     }
   };
-  xhr.open('POST', url, true);
+  xhr.open('POST', urlExtension, true);
   xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send(JSON.stringify(winnerLoserObj));
+  xhr.send(JSON.stringify(body));
 };
 
-/* Function to get user details details */
-var getUserInfo = function getUserInfo(cb) {
-  var url = '/get-user-data';
-  var errMessage = 'Sorry, we cannot update the user info.';
-  xhrGET(url, errMessage, cb);
+var postQuizRes = function postQuizRes(url, body, cb) {
+  xhrPOST(url, body, cb);
 };
 
 // Function to logout the current user//
-var logoutPostXhr = function logoutPostXhr(cb) {
-  var xhr = new XMLHttpRequest();
-  var url = '/logout';
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        cb(null);
-      } else {
-        cb(new Error('Your logout request could not be handled'));
-      }
-    }
-  };
-  xhr.open('POST', url, true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send();
+
+var logoutPostXhr = function logoutPostXhr(url, cb) {
+  xhrPOST(url, null, cb);
 };
 
 /* Generic xhr function used lower in this file */
@@ -70,5 +55,12 @@ var getQuiz = function getQuiz(cb) {
 var getWalls = function getWalls(cb) {
   var url = '/get-walls';
   var errMessage = 'Sorry, we were unable provide a wall of fame/shame.';
+  xhrGET(url, errMessage, cb);
+};
+
+/* Function to get user details details */
+var getUserInfo = function getUserInfo(cb) {
+  var url = '/get-user-data';
+  var errMessage = 'Sorry, we cannot update the user info.';
   xhrGET(url, errMessage, cb);
 };

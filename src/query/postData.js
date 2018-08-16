@@ -1,5 +1,8 @@
-const dbConnection = require('../database/dbconnection.js');
+const cookie = require('cookie');
+const { verify } = require('jsonwebtoken');
 
+const { SECRET } = process.env;
+const dbConnection = require('../database/dbconnection.js');
 // Updates the elo score of the user, called in pushQuizHandler
 const updateElo = (userId, eloNew, cb) => {
   // The maximum change in ELO ranking is 200. Additional conditions are put
@@ -17,7 +20,7 @@ const updateElo = (userId, eloNew, cb) => {
   });
 };
 
-// Logs the event of a rating, called in pushQuizHandler
+// Logs the event of a rating, called in postQuizHandler
 const logRating = (user1Id, user1Elo, user2Id, user2Elo, cb) => {
   const queryString = 'INSERT INTO ratings (winner_id, winner_elo, loser_id, loser_elo) VALUES ($1, $2, $3, $4)';
   dbConnection.query(queryString, [user1Id, user1Elo, user2Id, user2Elo], (err) => {
