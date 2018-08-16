@@ -10,7 +10,7 @@ See the original repository here >> https://github.com/FACN4/Week6-Rate-My-GIT
 
 ## Additional Features
   - **User signup and login page**
-  - **Username and profile pic displayed in the top right of the main page**
+  - **User's email displayed in the top right of the main page**
   - **Each user can review their own voting history(Stretch Goal)** 
 
 ![](https://i.imgur.com/GHcn82q.png)
