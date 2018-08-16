@@ -2,7 +2,7 @@ const cookie = require('cookie');
 const { verify } = require('jsonwebtoken');
 const handlers = require('./handlers/handlers.js');
 
-const SECRET = 'hcdcjdhcdcdchdohcioj';
+const { SECRET } = process.env;
 
 const assetURLs = [
   '/index.html',
