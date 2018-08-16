@@ -106,7 +106,7 @@ var postQuizResults = function postQuizResults(winnerProp) {
     winner: globalUsers[winnerProp],
     loser: globalUsers[loserProp]
   };
-  postQuizRes(winnerLoserObj, function (err) {
+  postQuizRes('/post-quiz-result', winnerLoserObj, function (err) {
     if (err) {
       warningMessage('Sorry, there was a problem with sending your answer', 3000);
     }
@@ -118,7 +118,7 @@ var postQuizResults = function postQuizResults(winnerProp) {
 var logoutBtn = document.getElementById('logoutBtn');
 
 logoutBtn.addEventListener('click', function () {
-  logoutPostXhr(function (err) {
+  logoutPostXhr('/logout', function (err) {
     if (err) {
       console.log('Logout failed');
     } else {
