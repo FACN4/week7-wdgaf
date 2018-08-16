@@ -19,11 +19,7 @@ See the original repository here >> https://github.com/FACN4/Week6-Rate-My-GIT
 
 ## Preparation
 
-### We had a great preparation session where we discussed ideas
-
-![](https://i.imgur.com/dI3Hrpc.jpg)
-
-### Created Wireframes
+### We had a great preparation session where we created Wireframes
 
 ![](https://i.imgur.com/389OxWG.jpg)
 
