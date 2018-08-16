@@ -20,6 +20,24 @@ var xhrPOST = function xhrPOST(url, body, cb) {
   xhr.send(JSON.stringify(body));
 };
 
+/* Function to send signup details */
+var signupPostXhr = function signupPostXhr(signupDetails, cb) {
+  var xhr = new XMLHttpRequest();
+  var url = '/sign-up';
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        cb(null);
+      } else {
+        cb(new Error('Your register request could not be handled'));
+      }
+    }
+  };
+  xhr.open('POST', url, true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify(signupDetails));
+};
+
 var postQuizRes = function postQuizRes(url, body, cb) {
   xhrPOST(url, body, cb);
 };
