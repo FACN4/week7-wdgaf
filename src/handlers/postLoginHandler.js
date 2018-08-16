@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt');
 const qs = require('querystring');
-const { parse } = require('cookie');
-const { sign, verify } = require('jsonwebtoken');
+const { sign } = require('jsonwebtoken');
 const { getHash } = require('../query/getData');
 
 const { SECRET } = process.env;
@@ -19,9 +18,12 @@ const postLoginHandler = (request, response) => {
       bcrypt
         .compare(userData.password, hash)
         .then((res) => {
-          if (res === true) {
+          if (res) {
             const cookie = sign(userData.email, SECRET);
-            response.writeHead(302, { Location: '/', 'Set-Cookie': `jwt=${cookie}; HttpOnly` });
+            response.writeHead(302, {
+              Location: '/',
+              'Set-Cookie': `jwt=${cookie}; HttpOnly`,
+            });
             response.end();
           } else {
             response.writeHead(302, { Location: '/login-failed' });
